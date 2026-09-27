@@ -127,7 +127,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
           {/* Favorites */}
           <button
             onClick={() => setActiveFilter('favorites')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`w-full h-11 flex items-center justify-between px-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
               activeFilter === 'favorites'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
                 : 'text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03]'
@@ -167,7 +167,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
                 <button
                   key={col.id}
                   onClick={() => setActiveFilter(col.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                  className={`w-full h-11 flex items-center justify-between px-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                     isSelected
                       ? 'bg-[#292a2d] text-[#f2f2f3]'
                       : 'text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03]'
