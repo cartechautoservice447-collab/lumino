@@ -124,12 +124,12 @@ export const EditorPanel: React.FC = () => {
   return (
     <main 
       aria-label="Note Editor"
-      className={`glass-panel animate-panel-in h-full rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-xl overflow-hidden relative ${
+      className={`glass-panel animate-panel-in h-full p-6 flex flex-col justify-between shadow-xl overflow-hidden relative ${
         isFullscreenEditor ? 'fixed inset-4 z-50 bg-[#1a1c1f]' : ''
       }`}
     >
       {/* Header Row */}
-      <div className="flex items-center justify-between pb-3.5 mb-2 border-b border-white/[0.06] shrink-0">
+      <div className="flex items-center justify-between pb-4 mb-3 border-b border-white/[0.06] shrink-0">
         {/* Title Input / Display */}
         <div className="flex-1 min-w-0 mr-4">
           <input
@@ -152,7 +152,7 @@ export const EditorPanel: React.FC = () => {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="px-3 py-1.5 rounded-lg bg-[#292a2d] hover:bg-[#343538] text-xs font-semibold text-[#f2f2f3] border border-white/[0.06] flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="h-10 px-4 rounded-xl bg-[#292a2d] hover:bg-[#343538] text-sm font-semibold text-[#f2f2f3] border border-white/[0.06] flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <span>{collectionName}</span>
               <ChevronDown className="w-3.5 h-3.5 text-[#9a9da3]" />
@@ -190,7 +190,7 @@ export const EditorPanel: React.FC = () => {
           {/* Favorite Button */}
           <button
             onClick={() => toggleFavorite(currentNote.id)}
-            className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center transition-colors cursor-pointer"
+            className="lumino-icon-button text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center transition-colors cursor-pointer"
             title={currentNote.favorited ? 'Remove from favorites' : 'Add to favorites'}
             aria-label={currentNote.favorited ? 'Remove from favorites' : 'Add to favorites'}
           >
