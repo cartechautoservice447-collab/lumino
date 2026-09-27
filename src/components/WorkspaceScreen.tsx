@@ -32,7 +32,7 @@ export const WorkspaceScreen: React.FC = () => {
   }, [currentNoteId]);
 
   return (
-    <div className="app-backdrop relative h-screen w-screen overflow-hidden p-3 sm:p-4 select-none">
+    <div className="app-backdrop relative h-screen w-screen overflow-hidden p-4 select-none">
       {/* Subtle grain texture overlay matching reference */}
       <div className="grain-overlay pointer-events-none absolute inset-0" />
 
@@ -87,16 +87,16 @@ export const WorkspaceScreen: React.FC = () => {
 
       {/* Desktop / Tablet 3-Panel Grid (≥ 768px) */}
       <div 
-        className="hidden md:grid h-full relative"
+        className="workspace-desktop-grid hidden md:grid h-full relative"
         style={{
           gridTemplateColumns: isSidebarCollapsed && isNoteListCollapsed
             ? '1fr'
             : isSidebarCollapsed
-            ? 'minmax(320px, 28%) 1fr'
+            ? 'minmax(320px, var(--lumino-notes-width)) minmax(0, 1fr)'
             : isNoteListCollapsed
-            ? 'minmax(260px, 20%) 1fr'
-            : 'minmax(260px, 17.6%) minmax(320px, 23.0%) 1fr',
-          gap: 'clamp(12px, 2.1vw, 24px)',
+            ? 'minmax(260px, var(--lumino-sidebar-width)) minmax(0, 1fr)'
+            : 'minmax(260px, var(--lumino-sidebar-width)) minmax(320px, var(--lumino-notes-width)) minmax(0, 1fr)',
+          gap: '18px',
         }}
       >
         {/* Floating reopen button if Sidebar is collapsed */}

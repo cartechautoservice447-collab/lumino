@@ -22,12 +22,12 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 py-2.5 px-3 rounded-xl bg-[#14161a] border border-white/[0.06] mb-3">
       {/* Left Formatting Tools */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1.5">
         {/* Bold */}
         <button
           type="button"
           onClick={() => onApplyFormat('bold')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors"
           title="Bold (Ctrl+B)"
           aria-label="Bold formatting"
         >
@@ -38,7 +38,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('italic')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center italic text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center italic text-xs transition-colors"
           title="Italic (Ctrl+I)"
           aria-label="Italic formatting"
         >
@@ -49,7 +49,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('code')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-mono text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-mono text-xs transition-colors"
           title="Inline Code"
           aria-label="Inline code formatting"
         >
@@ -60,7 +60,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('link')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
           title="Insert Link"
           aria-label="Insert link"
         >
@@ -71,7 +71,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('image')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
           title="Insert Image"
           aria-label="Insert image"
         >
@@ -85,12 +85,12 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
       </div>
 
       {/* Right Controls: Fullscreen + Write/Preview segmented toggle */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3.5">
         {/* Expand / Fullscreen Toggle */}
         <button
           type="button"
           onClick={onToggleFullscreen}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center transition-colors"
+          className="lumino-icon-button text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center transition-colors"
           title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
           aria-label={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
         >
@@ -106,7 +106,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
           <button
             type="button"
             onClick={() => onModeChange('write')}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+            className={`min-h-8 px-3.5 py-1 rounded-lg text-xs font-medium transition-colors ${
               mode === 'write'
                 ? 'bg-[#292a2d] text-[#f2f2f3] shadow-sm'
                 : 'text-[#9a9da3] hover:text-[#f2f2f3]'
@@ -117,7 +117,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
           <button
             type="button"
             onClick={() => onModeChange('preview')}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+            className={`min-h-8 px-3.5 py-1 rounded-lg text-xs font-medium transition-colors ${
               mode === 'preview'
                 ? 'bg-[#292a2d] text-[#f2f2f3] shadow-sm'
                 : 'text-[#9a9da3] hover:text-[#f2f2f3]'

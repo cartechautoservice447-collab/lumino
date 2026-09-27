@@ -44,10 +44,10 @@ export const NoteListPanel: React.FC<NoteListPanelProps> = ({ onCollapse }) => {
   return (
     <section 
       aria-label="Notes List"
-      className="glass-panel animate-panel-in flex h-full w-full flex-col rounded-2xl overflow-hidden shadow-xl"
+      className="glass-panel animate-panel-in flex h-full w-full flex-col overflow-hidden shadow-xl"
     >
       {/* Pinned Header Row - Spans full width edge-to-edge */}
-      <header className="flex items-center justify-between gap-2 border-b border-white/5 px-5 py-4 shrink-0">
+      <header className="flex items-center justify-between gap-2 border-b border-white/5 px-5 py-5 shrink-0">
         <div className="flex items-baseline gap-2.5 min-w-0">
           <h2 className="text-base font-semibold tracking-tight text-[#f2f2f3] truncate">
             {headerInfo.title}
@@ -59,7 +59,7 @@ export const NoteListPanel: React.FC<NoteListPanelProps> = ({ onCollapse }) => {
 
         <button
           onClick={onCollapse}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] border border-white/5 flex items-center justify-center transition-colors shrink-0"
+          className="w-9 h-9 rounded-xl text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] border border-white/5 flex items-center justify-center transition-colors shrink-0"
           title="Collapse note list"
           aria-label="Collapse note list"
         >
@@ -70,7 +70,7 @@ export const NoteListPanel: React.FC<NoteListPanelProps> = ({ onCollapse }) => {
       {/* Scrollable list of NoteCards with p-3 so hover scale [1.015] never clips left/right borders */}
       <div 
         aria-label="List of notes" 
-        className="min-h-0 flex-1 space-y-2.5 overflow-y-auto p-3 focus:outline-none"
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4 focus:outline-none"
       >
         {filteredNotes.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-48 text-center p-4">

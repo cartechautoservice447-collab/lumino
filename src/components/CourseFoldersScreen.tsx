@@ -19,14 +19,14 @@ export const CourseFoldersScreen: React.FC = () => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
   return (
-    <main className="app-backdrop relative min-h-screen w-full overflow-x-hidden text-[#f2f2f3] py-8 sm:py-10 lg:py-12 px-6 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-start">
+    <main className="app-backdrop relative min-h-screen w-full overflow-x-hidden text-[#f2f2f3] py-6 sm:py-8 lg:py-10 px-5 sm:px-7 md:px-10 lg:px-12 flex flex-col justify-start">
       {/* Subtle grain texture overlay matching reference */}
       <div className="grain-overlay pointer-events-none absolute inset-0" />
 
       {/* Centered container with max-width: 1536px (max-w-screen-2xl) producing 192px margins at 1920px width */}
-      <div className="relative w-full max-w-[1536px] max-w-screen-2xl mx-auto space-y-6 sm:space-y-8">
+      <div className="relative w-full max-w-[1400px] mx-auto space-y-6 sm:space-y-8">
         {/* Full-width Welcome Banner Glass Card with animate-panel-in */}
-        <header className="glass-panel animate-panel-in flex flex-wrap items-center justify-between gap-4 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <header className="glass-panel animate-panel-in flex flex-wrap items-center justify-between gap-4 p-6 sm:p-7 shadow-xl">
           <div className="space-y-1">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f2f2f3]">
               Welcome Back, {user.name}!
@@ -40,7 +40,7 @@ export const CourseFoldersScreen: React.FC = () => {
             {/* Gear Settings Button */}
             <button
               onClick={() => setIsSettingsModalOpen(true)}
-              className="w-10 h-10 rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
+              className="lumino-icon-button rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
               title="Settings"
               aria-label="Settings"
             >
@@ -50,7 +50,7 @@ export const CourseFoldersScreen: React.FC = () => {
             {/* Sign Out / Export Button */}
             <button
               onClick={() => setIsSettingsModalOpen(true)}
-              className="w-10 h-10 rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
+              className="lumino-icon-button rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
               title="Account & Sign out"
               aria-label="Account & Sign out"
             >
@@ -72,7 +72,7 @@ export const CourseFoldersScreen: React.FC = () => {
             {/* Button styled using exact #3bb360 token and reference hover scale */}
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="px-4 py-2 rounded-lg bg-[#3bb360] text-white text-xs font-medium flex items-center gap-1.5 shadow-sm cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99]"
+              className="lumino-primary-action px-4 bg-[#3bb360] text-white text-sm font-medium flex items-center gap-2 shadow-sm cursor-pointer transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99]"
               style={{ backgroundColor: '#3bb360' }}
             >
               <Plus className="w-3.5 h-3.5" />
@@ -81,7 +81,7 @@ export const CourseFoldersScreen: React.FC = () => {
           </div>
 
           {/* Grid of Course Cards with gap-12 (3rem / 48px) matching ~3% container width */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {collections.map((collection, index) => (
               <CourseFolderCard
                 key={collection.id}
