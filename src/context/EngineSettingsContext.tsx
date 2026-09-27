@@ -152,7 +152,7 @@ export const EngineSettingsProvider: React.FC<{ children: React.ReactNode }> = (
   const value = useMemo<EngineSettingsContextType>(() => ({
     settings,
     update: (key, value) => {
-      setSettings((current) => normalize({ ...current, [key]: value, profile: key === 'profile' ? value : 'reference' }));
+      setSettings((current) => normalize({ ...current, [key]: value, profile: key === 'profile' ? (value as EngineProfile) : 'reference' }));
     },
     applyProfile: (profile) => {
       const preset = ENGINE_PROFILES.find((item) => item.id === profile)?.values ?? ENGINE_DEFAULTS;
