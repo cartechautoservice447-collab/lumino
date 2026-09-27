@@ -22,12 +22,12 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 py-2.5 px-3 rounded-xl bg-[#14161a] border border-white/[0.06] mb-3">
       {/* Left Formatting Tools */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1.5">
         {/* Bold */}
         <button
           type="button"
           onClick={() => onApplyFormat('bold')}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors"
+          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors"
           title="Bold (Ctrl+B)"
           aria-label="Bold formatting"
         >
@@ -85,7 +85,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
       </div>
 
       {/* Right Controls: Fullscreen + Write/Preview segmented toggle */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3.5">
         {/* Expand / Fullscreen Toggle */}
         <button
           type="button"
