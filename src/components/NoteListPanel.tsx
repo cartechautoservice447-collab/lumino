@@ -59,7 +59,7 @@ export const NoteListPanel: React.FC<NoteListPanelProps> = ({ onCollapse }) => {
 
         <button
           onClick={onCollapse}
-          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] border border-white/5 flex items-center justify-center transition-colors shrink-0"
+          className="w-9 h-9 rounded-xl text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] border border-white/5 flex items-center justify-center transition-colors shrink-0"
           title="Collapse note list"
           aria-label="Collapse note list"
         >
