@@ -70,7 +70,7 @@ export const NoteCard: React.FC<NoteCardProps> = ({
           aria-label={note.favorited ? 'Remove from favorites' : 'Add to favorites'}
         >
           <Star
-            className={`w-4 h-4 transition-colors ${
+            className={`w-[18px] h-[18px] transition-colors ${
               note.favorited
                 ? 'text-[#79c0ff] fill-current'
                 : 'text-[#6b6e73] group-hover:text-[#9a9da3]'
