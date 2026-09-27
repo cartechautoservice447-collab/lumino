@@ -13,6 +13,7 @@ export const WorkspaceScreen: React.FC = () => {
     setIsNoteListCollapsed,
     currentNoteId,
     activeFilter,
+    editorMode,
   } = useNotes();
 
   // Mobile active tab: 'collections' | 'notes' | 'editor'
@@ -32,39 +33,48 @@ export const WorkspaceScreen: React.FC = () => {
   }, [currentNoteId]);
 
   return (
-    <div className="app-backdrop relative h-screen w-screen overflow-hidden p-4 select-none">
+    <div className="app-backdrop relative h-screen w-screen overflow-hidden p-2 sm:p-3 select-none">
       {/* Subtle grain texture overlay matching reference */}
       <div className="grain-overlay pointer-events-none absolute inset-0" />
 
-      {/* Mobile Top Navigation (< 768px) */}
-      <div className="md:hidden flex items-center justify-between pb-3 mb-1 border-b border-white/[0.06]">
-        <div className="flex items-center p-1 rounded-xl bg-[#14161a] border border-white/[0.06] w-full">
+      {/* Top Navigation: Courses | Notes | Editor aligned in clean dedicated space with original colors */}
+      <div
+        className={`md:hidden flex items-center justify-center pb-2 mb-1 border-b border-white/[0.06] transition-opacity duration-200 ${
+          editorMode === 'preview' && mobileTab === 'editor'
+            ? 'opacity-40 hover:opacity-100 focus-within:opacity-100'
+            : 'opacity-100'
+        }`}
+      >
+        <div className="flex items-center p-1 rounded-xl bg-[#14161a] border border-white/[0.06] w-full max-w-xs sm:max-w-sm mx-auto shadow-sm">
           <button
+            type="button"
             onClick={() => setMobileTab('collections')}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer text-center select-none active:scale-[0.98] ${
               mobileTab === 'collections'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
-                : 'text-[#9a9da3]'
+                : 'text-[#9a9da3] hover:text-[#f2f2f3]'
             }`}
           >
-            Courses
+            Course
           </button>
           <button
+            type="button"
             onClick={() => setMobileTab('notes')}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer text-center select-none active:scale-[0.98] ${
               mobileTab === 'notes'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
-                : 'text-[#9a9da3]'
+                : 'text-[#9a9da3] hover:text-[#f2f2f3]'
             }`}
           >
             Notes
           </button>
           <button
+            type="button"
             onClick={() => setMobileTab('editor')}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer text-center select-none active:scale-[0.98] ${
               mobileTab === 'editor'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
-                : 'text-[#9a9da3]'
+                : 'text-[#9a9da3] hover:text-[#f2f2f3]'
             }`}
           >
             Editor
@@ -73,7 +83,7 @@ export const WorkspaceScreen: React.FC = () => {
       </div>
 
       {/* Mobile Single Panel View */}
-      <div className="md:hidden h-[calc(100vh-4.5rem)]">
+      <div className="md:hidden h-[calc(100vh-4.25rem)]">
         {mobileTab === 'collections' && (
           <SidebarNav />
         )}
@@ -85,18 +95,18 @@ export const WorkspaceScreen: React.FC = () => {
         )}
       </div>
 
-      {/* Desktop / Tablet 3-Panel Grid (≥ 768px) */}
+      {/* Desktop / Tablet 3-Panel Grid (≥ 768px) - Editor screen increased */}
       <div 
-        className="workspace-desktop-grid hidden md:grid h-full relative"
+        className="hidden md:grid h-full relative"
         style={{
           gridTemplateColumns: isSidebarCollapsed && isNoteListCollapsed
             ? '1fr'
             : isSidebarCollapsed
-            ? 'minmax(320px, var(--lumino-notes-width)) minmax(0, 1fr)'
+            ? 'minmax(280px, 22%) 1fr'
             : isNoteListCollapsed
-            ? 'minmax(260px, var(--lumino-sidebar-width)) minmax(0, 1fr)'
-            : 'minmax(260px, var(--lumino-sidebar-width)) minmax(320px, var(--lumino-notes-width)) minmax(0, 1fr)',
-          gap: '18px',
+            ? 'minmax(220px, 15%) 1fr'
+            : 'minmax(210px, 14.5%) minmax(260px, 18.5%) 1fr',
+          gap: 'clamp(10px, 1.4vw, 18px)',
         }}
       >
         {/* Floating reopen button if Sidebar is collapsed */}

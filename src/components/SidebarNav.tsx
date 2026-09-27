@@ -41,7 +41,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
   return (
     <aside 
       aria-label="Main Navigation"
-      className="glass-panel animate-panel-in h-full p-[22px] flex flex-col justify-between select-none shadow-xl overflow-hidden"
+      className="glass-panel animate-panel-in h-full rounded-2xl p-4 flex flex-col justify-between select-none shadow-xl overflow-hidden"
     >
       <div className="flex flex-col min-h-0 flex-1">
         {/* Brand Lockup + Collapse Button */}
@@ -57,7 +57,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
 
           <button
             onClick={onCollapse}
-            className="lumino-icon-button text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.05] flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] flex items-center justify-center transition-colors"
             title="Collapse sidebar"
             aria-label="Collapse sidebar"
           >
@@ -68,7 +68,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
         {/* Back to All Courses Link */}
         <button
           onClick={() => setCurrentView('courses')}
-          className="w-full h-11 flex items-center gap-2 px-4 rounded-xl border border-white/[0.06] bg-white/[0.035] text-sm font-medium text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] mb-3 transition-colors group cursor-pointer"
+          className="flex items-center gap-2 text-xs font-medium text-[#9a9da3] hover:text-[#f2f2f3] py-2 mb-2 transition-colors group cursor-pointer"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
           <span>All Courses</span>
@@ -78,7 +78,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
         <button
           onClick={() => addNote()}
           style={{ backgroundColor: '#3bb360' }}
-          className="animate-pulse-glow lumino-primary-action w-full px-4 bg-[#3bb360] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] mb-3 shadow-sm cursor-pointer"
+          className="animate-pulse-glow w-full py-2.5 px-3 rounded-lg bg-[#3bb360] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] mb-3 shadow-sm cursor-pointer"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>New Note</span>
@@ -93,7 +93,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Escape' && setSearchQuery('')}
             placeholder="Search notes"
-            className="w-full h-11 pl-10 pr-8 rounded-xl bg-[#14161a] border border-white/[0.06] text-sm text-[#f2f2f3] placeholder-[#6b6e73] focus:outline-none focus:border-white/[0.16] transition-colors"
+            className="w-full pl-9 pr-7 py-2 rounded-lg bg-[#14161a] border border-white/[0.06] text-xs text-[#f2f2f3] placeholder-[#6b6e73] focus:outline-none focus:border-white/[0.16] transition-colors"
           />
           {searchQuery && (
             <button
@@ -111,7 +111,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
           {/* All Notes */}
           <button
             onClick={() => setActiveFilter('all')}
-            className={`w-full h-11 flex items-center justify-between px-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
               activeFilter === 'all'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
                 : 'text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03]'
@@ -127,7 +127,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
           {/* Favorites */}
           <button
             onClick={() => setActiveFilter('favorites')}
-            className={`w-full h-11 flex items-center justify-between px-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
               activeFilter === 'favorites'
                 ? 'bg-[#292a2d] text-[#f2f2f3]'
                 : 'text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03]'
@@ -149,7 +149,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
             </span>
             <button
               onClick={() => setIsAddCourseModalOpen(true)}
-              className="w-6 h-6 rounded-lg hover:bg-white/[0.06] text-[#9a9da3] hover:text-[#f2f2f3] flex items-center justify-center transition-colors"
+              className="w-5 h-5 rounded hover:bg-white/[0.06] text-[#9a9da3] hover:text-[#f2f2f3] flex items-center justify-center transition-colors"
               title="Add collection"
               aria-label="Add collection"
             >
@@ -167,7 +167,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
                 <button
                   key={col.id}
                   onClick={() => setActiveFilter(col.id)}
-                  className={`w-full h-11 flex items-center justify-between px-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
                     isSelected
                       ? 'bg-[#292a2d] text-[#f2f2f3]'
                       : 'text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03]'
@@ -196,16 +196,16 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
         {/* Settings row */}
         <button
           onClick={() => setIsSettingsModalOpen(true)}
-          className="w-full h-11 flex items-center gap-2.5 px-3 rounded-xl text-sm font-medium text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.04] transition-colors cursor-pointer"
+          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.03] transition-colors cursor-pointer"
         >
           <Settings className="w-4 h-4 text-[#9a9da3]" />
           <span>Settings</span>
         </button>
 
         {/* User panel */}
-        <div className="h-16 flex items-center justify-between p-2.5 rounded-2xl bg-[#14161a] border border-white/[0.05]">
+        <div className="flex items-center justify-between p-2 rounded-xl bg-[#14161a] border border-white/[0.04]">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-full bg-[#292a2d] text-[#f2f2f3] font-semibold flex items-center justify-center text-xs shrink-0 border border-white/[0.06]">
+            <div className="w-7 h-7 rounded-full bg-[#292a2d] text-[#f2f2f3] font-semibold flex items-center justify-center text-xs shrink-0 border border-white/[0.06]">
               {user.avatarLetter}
             </div>
             <div className="min-w-0 flex flex-col text-left">
@@ -220,7 +220,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onCollapse }) => {
 
           <button
             onClick={() => setIsSettingsModalOpen(true)}
-            className="w-9 h-9 flex items-center justify-center text-[#6b6e73] hover:text-[#f2f2f3] p-1.5 rounded-xl hover:bg-white/[0.04] transition-colors shrink-0"
+            className="text-[#6b6e73] hover:text-[#f2f2f3] p-1.5 rounded-lg hover:bg-white/[0.04] transition-colors shrink-0"
             title="Sign out / Account"
             aria-label="Sign out / Account"
           >

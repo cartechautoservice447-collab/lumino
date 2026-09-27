@@ -1,33 +1,24 @@
 import React from 'react';
-import { Bold, Italic, Code, Link2, Image, Maximize2, Minimize2 } from 'lucide-react';
-import { EditorMode } from '../types';
+import { Bold, Italic, Code, Link2, Image } from 'lucide-react';
 
 interface EditorToolbarProps {
-  mode: EditorMode;
-  onModeChange: (mode: EditorMode) => void;
   statusText: string;
-  isFullscreen: boolean;
-  onToggleFullscreen: () => void;
   onApplyFormat: (format: 'bold' | 'italic' | 'code' | 'link' | 'image') => void;
 }
 
 export const EditorToolbar: React.FC<EditorToolbarProps> = ({
-  mode,
-  onModeChange,
   statusText,
-  isFullscreen,
-  onToggleFullscreen,
   onApplyFormat,
 }) => {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 py-2.5 px-3 rounded-xl bg-[#14161a] border border-white/[0.06] mb-3">
+    <div className="flex flex-wrap items-center justify-between gap-2.5 py-2 px-4 sm:px-6 border-y border-white/[0.06] bg-white/[0.015] select-none w-full">
       {/* Left Formatting Tools */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-1 sm:gap-1.5">
         {/* Bold */}
         <button
           type="button"
           onClick={() => onApplyFormat('bold')}
-          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors"
+          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-bold text-xs transition-colors cursor-pointer"
           title="Bold (Ctrl+B)"
           aria-label="Bold formatting"
         >
@@ -38,7 +29,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('italic')}
-          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center italic text-xs transition-colors"
+          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center italic text-xs transition-colors cursor-pointer"
           title="Italic (Ctrl+I)"
           aria-label="Italic formatting"
         >
@@ -49,7 +40,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('code')}
-          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-mono text-xs transition-colors"
+          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center font-mono text-xs transition-colors cursor-pointer"
           title="Inline Code"
           aria-label="Inline code formatting"
         >
@@ -60,7 +51,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('link')}
-          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
+          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors cursor-pointer"
           title="Insert Link"
           aria-label="Insert link"
         >
@@ -71,7 +62,7 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         <button
           type="button"
           onClick={() => onApplyFormat('image')}
-          className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors"
+          className="w-7 h-7 rounded-lg text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center text-xs transition-colors cursor-pointer"
           title="Insert Image"
           aria-label="Insert image"
         >
@@ -79,52 +70,13 @@ export const EditorToolbar: React.FC<EditorToolbarProps> = ({
         </button>
       </div>
 
-      {/* Middle Status text */}
-      <div className="text-[11px] font-mono uppercase tracking-wider text-[#6b6e73]">
-        {statusText}
-      </div>
-
-      {/* Right Controls: Fullscreen + Write/Preview segmented toggle */}
-      <div className="flex items-center gap-3.5">
-        {/* Expand / Fullscreen Toggle */}
-        <button
-          type="button"
-          onClick={onToggleFullscreen}
-          className="lumino-icon-button text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.06] flex items-center justify-center transition-colors"
-          title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-          aria-label={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-        >
-          {isFullscreen ? (
-            <Minimize2 className="w-3.5 h-3.5" />
-          ) : (
-            <Maximize2 className="w-3.5 h-3.5" />
-          )}
-        </button>
-
-        {/* Write / Preview Segmented Toggle */}
-        <div className="flex items-center p-0.5 rounded-lg bg-[#0c0d0f] border border-white/[0.06]">
-          <button
-            type="button"
-            onClick={() => onModeChange('write')}
-            className={`min-h-8 px-3.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-              mode === 'write'
-                ? 'bg-[#292a2d] text-[#f2f2f3] shadow-sm'
-                : 'text-[#9a9da3] hover:text-[#f2f2f3]'
-            }`}
-          >
-            Write
-          </button>
-          <button
-            type="button"
-            onClick={() => onModeChange('preview')}
-            className={`min-h-8 px-3.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-              mode === 'preview'
-                ? 'bg-[#292a2d] text-[#f2f2f3] shadow-sm'
-                : 'text-[#9a9da3] hover:text-[#f2f2f3]'
-            }`}
-          >
-            Preview
-          </button>
+      {/* Right side: Shortcut Hint + Status Text */}
+      <div className="flex items-center gap-3">
+        <span className="hidden sm:inline text-[10px] text-[#6b6e73] font-mono tracking-tight">
+          Markdown enabled
+        </span>
+        <div className="text-[11px] font-mono uppercase tracking-wider text-[#6b6e73]">
+          {statusText}
         </div>
       </div>
     </div>

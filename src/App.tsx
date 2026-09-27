@@ -5,9 +5,9 @@
 
 import React from 'react';
 import { NotesProvider, useNotes } from './context/NotesContext';
+import { CustomizationProvider } from './context/CustomizationContext';
 import { CourseFoldersScreen } from './components/CourseFoldersScreen';
 import { WorkspaceScreen } from './components/WorkspaceScreen';
-import { EngineSettingsProvider } from './context/EngineSettingsContext';
 
 function MainRouter() {
   const { currentView } = useNotes();
@@ -21,10 +21,10 @@ function MainRouter() {
 
 export default function App() {
   return (
-    <EngineSettingsProvider>
+    <CustomizationProvider>
       <NotesProvider>
         <MainRouter />
       </NotesProvider>
-    </EngineSettingsProvider>
+    </CustomizationProvider>
   );
 }

@@ -33,7 +33,7 @@ renderer.code = function ({ text, lang }: Tokens.Code): string {
 
 renderer.link = function ({ href, title, text }: Tokens.Link): string {
   const titleAttr = title ? ` title="${title}"` : '';
-  return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-[#79c0ff] underline underline-offset-4 hover:opacity-80 transition-opacity"${titleAttr}>${text}</a>`;
+  return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-[#3bb360] underline underline-offset-4 hover:opacity-80 transition-opacity"${titleAttr}>${text}</a>`;
 };
 
 marked.use({
