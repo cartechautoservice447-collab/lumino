@@ -50,7 +50,7 @@ export const CourseFoldersScreen: React.FC = () => {
             {/* Sign Out / Export Button */}
             <button
               onClick={() => setIsSettingsModalOpen(true)}
-              className="w-10 h-10 rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
+              className="lumino-icon-button rounded-xl border border-white/5 bg-white/[0.04] flex items-center justify-center text-[#9a9da3] hover:text-[#f2f2f3] hover:bg-white/[0.08] transition-colors cursor-pointer"
               title="Account & Sign out"
               aria-label="Account & Sign out"
             >
@@ -72,7 +72,7 @@ export const CourseFoldersScreen: React.FC = () => {
             {/* Button styled using exact #3bb360 token and reference hover scale */}
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="lumino-primary-action px-4 bg-[#3bb360] text-white text-sm font-medium flex items-center gap-2 shadow-sm cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99]"
+              className="lumino-primary-action px-4 bg-[#3bb360] text-white text-sm font-medium flex items-center gap-2 shadow-sm cursor-pointer transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99]"
               style={{ backgroundColor: '#3bb360' }}
             >
               <Plus className="w-3.5 h-3.5" />
