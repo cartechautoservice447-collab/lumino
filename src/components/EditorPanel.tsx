@@ -152,7 +152,7 @@ export const EditorPanel: React.FC = () => {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="h-10 px-4 rounded-xl bg-[#292a2d] hover:bg-[#343538] text-sm font-semibold text-[#f2f2f3] border border-white/[0.06] flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="h-10 w-[150px] px-4 rounded-xl bg-[#292a2d] hover:bg-[#343538] text-sm font-semibold text-[#f2f2f3] border border-white/[0.06] flex items-center justify-between gap-1.5 transition-colors cursor-pointer"
             >
               <span>{collectionName}</span>
               <ChevronDown className="w-3.5 h-3.5 text-[#9a9da3]" />
@@ -204,11 +204,11 @@ export const EditorPanel: React.FC = () => {
           {/* Delete Button */}
           <button
             onClick={() => setIsDeleteModalOpen(true)}
-            className="w-8 h-8 rounded-lg text-[#9a9da3] hover:text-red-400 hover:bg-red-500/10 flex items-center justify-center transition-colors cursor-pointer"
+            className="lumino-icon-button text-[#9a9da3] hover:text-red-400 hover:bg-red-500/10 flex items-center justify-center transition-colors cursor-pointer"
             title="Delete note"
             aria-label="Delete note"
           >
-            <Trash2 className="w-4 h-4" />
+            <Trash2 className="w-[18px] h-[18px]" />
           </button>
         </div>
       </div>
