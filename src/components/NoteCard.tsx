@@ -1,0 +1,98 @@
+import React from 'react';
+import { Star } from 'lucide-react';
+import { Note } from '../types';
+
+interface NoteCardProps {
+  note: Note;
+  collectionName: string;
+  isSelected: boolean;
+  index: number;
+  onSelect: () => void;
+  onToggleFavorite: () => void;
+}
+
+export const NoteCard: React.FC<NoteCardProps> = ({
+  note,
+  collectionName,
+  isSelected,
+  index,
+  onSelect,
+  onToggleFavorite,
+}) => {
+  // Extract a clean 2-line preview from the markdown body
+  const cleanPreview = React.useMemo(() => {
+    if (!note.body || !note.body.trim()) return null;
+    return note.body
+      .replace(/^#+\s+/gm, '') // remove headings
+      .replace(/```[\s\S]*?```/g, '') // remove code blocks
+      .replace(/`([^`]+)`/g, '$1') // remove inline code
+      .replace(/[*_~[\]]/g, '') // remove formatting tokens
+      .replace(/>\s+/gm, '') // remove blockquotes
+      .trim()
+      .replace(/\s+/g, ' '); // collapse extra whitespace
+  }, [note.body]);
+
+  const metaString = `${note.metaDateText} • ${collectionName.toUpperCase()}`;
+
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      style={{ animationDelay: `${Math.min(index, 10) * 35}ms` }}
+      className={`group animate-card-in w-full rounded-xl border p-4 text-left transition-all duration-300 cursor-pointer select-none outline-none focus:outline-none focus:ring-0 ${
+        isSelected
+          ? 'border-white/20 bg-white/[0.08] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] hover:-translate-y-0.5 hover:scale-[1.015] hover:border-white/25 hover:bg-white/[0.10]'
+          : 'border-white/5 bg-white/[0.03] hover:-translate-y-0.5 hover:scale-[1.015] hover:border-white/15 hover:bg-white/[0.06]'
+      }`}
+    >
+      {/* Title & Favorite Star */}
+      <div className="flex items-start justify-between gap-2 mb-1.5">
+        <h4 className="text-sm font-bold text-[#f2f2f3] truncate leading-tight flex-1">
+          {note.title || 'Untitled note'}
+        </h4>
+
+        <span
+          role="button"
+          tabIndex={0}
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFavorite();
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              onToggleFavorite();
+            }
+          }}
+          className="text-[#6b6e73] hover:text-[#f2f2f3] transition-colors p-0.5 rounded -mr-0.5 -mt-0.5 cursor-pointer outline-none focus:outline-none"
+          title={note.favorited ? 'Remove from favorites' : 'Add to favorites'}
+          aria-label={note.favorited ? 'Remove from favorites' : 'Add to favorites'}
+        >
+          <Star
+            className={`w-4 h-4 transition-colors ${
+              note.favorited
+                ? 'text-[#3bb360] fill-[#3bb360]'
+                : 'text-[#6b6e73] group-hover:text-[#9a9da3]'
+            }`}
+            style={note.favorited ? { color: 'var(--accent-green, #3bb360)', fill: 'var(--accent-green, #3bb360)' } : undefined}
+          />
+        </span>
+      </div>
+
+      {/* 2-line clamped preview text or "Empty note" */}
+      <div className="text-xs mb-3 line-clamp-2 min-h-[2rem] leading-relaxed">
+        {cleanPreview ? (
+          <p className="text-[#9a9da3]">{cleanPreview}</p>
+        ) : (
+          <p className="text-[#6b6e73] italic">Empty note</p>
+        )}
+      </div>
+
+      {/* Metadata Line */}
+      <div className="text-[10px] uppercase font-mono tracking-wider text-[#6b6e73]">
+        {metaString}
+      </div>
+    </button>
+  );
+};

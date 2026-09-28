@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 export interface Note {
   id: string;
   title: string;
   body: string;
   favorite: boolean;
   collectionId: string | null;
+=======
+export interface Collection {
+  id: string;
+  name: string;
+  tag: string;
+  lastEditedText: string;
+>>>>>>> 22f2e308992eebb1fc66e8f86c64370be20257e0
   createdAt: number;
   updatedAt: number;
 }
 
+<<<<<<< HEAD
 export interface Collection {
   id: string;
   name: string;
@@ -52,4 +61,28 @@ export interface User {
     username?: string;
     full_name?: string;
   };
+=======
+export interface Note {
+  id: string;
+  collectionId: string;
+  title: string;
+  body: string;
+  favorited: boolean;
+  metaDateText: string;
+  savedStatus: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export type EditorMode = 'write' | 'preview';
+
+export type ActiveFilterType = 'all' | 'favorites' | string; // collectionId
+
+export type ViewScreen = 'courses' | 'workspace';
+
+export interface UserProfile {
+  name: string;
+  email: string;
+  avatarLetter: string;
+>>>>>>> 22f2e308992eebb1fc66e8f86c64370be20257e0
 }

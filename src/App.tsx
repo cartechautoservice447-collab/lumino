@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { PanelLeftClose, FileText, Minimize2 } from 'lucide-react';
 import { useAuth } from './context/AuthContext';
@@ -249,3 +250,35 @@ export const App: React.FC = () => {
   );
 };
 export default App;
+=======
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React from 'react';
+import { NotesProvider, useNotes } from './context/NotesContext';
+import { CustomizationProvider } from './context/CustomizationContext';
+import { CourseFoldersScreen } from './components/CourseFoldersScreen';
+import { WorkspaceScreen } from './components/WorkspaceScreen';
+
+function MainRouter() {
+  const { currentView } = useNotes();
+
+  if (currentView === 'courses') {
+    return <CourseFoldersScreen />;
+  }
+
+  return <WorkspaceScreen />;
+}
+
+export default function App() {
+  return (
+    <CustomizationProvider>
+      <NotesProvider>
+        <MainRouter />
+      </NotesProvider>
+    </CustomizationProvider>
+  );
+}
+>>>>>>> 22f2e308992eebb1fc66e8f86c64370be20257e0
