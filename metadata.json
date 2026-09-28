@@ -1,0 +1,6 @@
+{
+  "name": "Glass Notes",
+  "description": "Glassmorphism-styled Markdown note-taking workspace with course folders, note management, and GitHub Dark code syntax highlighting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
