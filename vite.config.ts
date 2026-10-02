@@ -6,9 +6,10 @@ import { defineConfig } from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [
-      // Lock the production transform to Vite's automatic JSX runtime.
-      // This prevents any JSX file from depending on a browser-global React variable.
-      react({ jsxRuntime: 'automatic' }),
+      // Use the classic JSX transform because every TSX module in this
+      // project imports React explicitly. This makes the generated production
+      // code independent of any automatic-JSX runtime inference.
+      react({ jsxRuntime: 'classic' }),
       tailwindcss(),
     ],
     resolve: {
@@ -17,10 +18,7 @@ export default defineConfig(() => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
